@@ -23,8 +23,13 @@
     background-color: #395162;
     height: calc(100vh - 60px);
     width: 67%;
-    transform: translateX(-101%);
-    transition: 0.3s;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.show-nav-list{
+    transform: translateY(0);
+    visibility: visible;
 }
 .menu-button{
     height: 40px;
