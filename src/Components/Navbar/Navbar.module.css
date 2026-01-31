@@ -4,11 +4,12 @@
     justify-content: space-between;
     position: fixed;
     z-index: 9999;
-    background-color: #1a2630;
-    color: #83bbdc;
+    background-color:var(--color-one);
+    color: var(--color-two);
     width: 100%;
     height: 60px;
     padding:0 10px;
+    background: linear-gradient(to bottom, #777, #0f5386);
 }
 .nav-list{
     display: flex;
@@ -19,8 +20,8 @@
     gap: 10px;
     top: 60px;
     left: 0;
-    color: #83bbdc;
-    background-color: #395162;
+    color: var(--color-two);
+    background-color: var(--color-three);
     height: calc(100vh - 60px);
     width: 67%;
     transform: translateX(-100%);
@@ -35,19 +36,26 @@
     height: 40px;
     width: 40px;
     background-color: transparent;
-    border: 2px solid #83bbdc;
+    border: 2px solid var(--color-two);
     border-radius: 5px;
     cursor: pointer;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     padding: 0 5px;
-
+    transition: 200ms;
+}
+.menu-button :hover{
+    background-color: white;
+    transition: 200ms;
+}
+.menu-button:hover span {
+    background-color: white;
 }
 .menu-button span{
     width: 100%;
     height: 2px;
-    background-color: #83bbdc;
+    background-color: var(--color-two);
 }
 @media (min-width: 767px) {
     .nav-bar{
@@ -59,5 +67,19 @@
     .nav-bar{
     padding-left: 40px;
     padding-right: 40px;
+    }
+    .menu-button{
+        display: none;
+    }
+    .nav-list{
+        visibility: visible;
+        transform: translateX(0);
+        height: fit-content;
+        width: fit-content;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        font-size: 22px;
+        
     }
 }

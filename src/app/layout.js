@@ -1,4 +1,3 @@
-
 import Navbar from "@/Components/Navbar/Navbar";
 import "./globals.css";
 
@@ -15,7 +14,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true}>
         <Navbar />
         <main className="main">
-          {children}
+          <section className="main-section">{children}</section>
         </main>
       
       </body>
