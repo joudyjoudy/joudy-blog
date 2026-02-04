@@ -22,22 +22,9 @@ a {
 ul{
   list-style: none;
 }
-button{
-  cursor: pointer;
-  min-width: 50px;
-  color: #5c839b;
-  background-color: #e9f1e7;
-  border: 1px solid #395162;
-  margin: 20px;
-  padding: 5px 10px;
-  font-size: x-large;
-  font-weight: bolder;
-  border-radius: 10px;
-  box-shadow: #395162 0px 5px 15px;
-}
+
   
 .main{
- 
   overflow-y: auto;
   transform: translateY(60px);
 }

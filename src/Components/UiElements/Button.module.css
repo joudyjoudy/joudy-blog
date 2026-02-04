@@ -1,0 +1,33 @@
+.button {
+   cursor: pointer;
+  min-width: 50px;
+  color: #5c839b;
+  background-color: #e9f1e7;
+  border: 1px solid #395162;
+  margin: 20px;
+  padding: 5px 10px;
+  font-size: x-large;
+  font-weight: bolder;
+  border-radius: 10px;
+  box-shadow: #395162 0px 5px 15px;
+  gap: 10px;
+}
+.danger {
+  background-color: #f54242;
+  color: white;
+  border: 1px solid #7a1212;
+}
+.outline{
+  background-color: transparent;
+  color: #5c839b;
+  border: 2px solid #5c839b;
+}
+.outline:hover {
+  opacity: 1;
+  background-color: #749fb9;
+  color: white;
+}
+.disable {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

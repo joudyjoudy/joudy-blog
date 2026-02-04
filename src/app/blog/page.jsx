@@ -1,7 +1,7 @@
 "use client"
-
 import { useState } from "react"
 import classes from "./page.module.css"
+import Button from "@/Components/UiElements/Button"
 export default function BlogPage(){
     const [counter, setCounter] = useState(0)
     const [showList, setShowList] = useState(true)
@@ -22,16 +22,18 @@ export default function BlogPage(){
         <h2>blog page</h2>
         <div>
         <p>{counter}</p>
-        <button onClick={increaseCounter}>+</button>
-        <button onClick={decreaseCounter}>-</button>
-        <button onClick={resetCounter}>reset</button>
+        <section className={classes['actions']}>
+            <Button onClick={increaseCounter} disable={counter >= 10}>+</Button>
+        <Button onClick={decreaseCounter} outline disable={counter <= 0}>-</Button>
+        <Button onClick={resetCounter} danger disable={counter === 0}>reset</Button>
+        </section>
         </div>
         <br />
         <hr />
         <br />
 
         <div>
-            <button onClick={toggleMenu}>{showList ? "Hide" : "Show"} menu</button>
+            <Button onClick={toggleMenu} danger={!showList}>{showList ? "Hide" : "Show"} menu</Button>
             {showList && (<ul className={`${classes['list']} 
                 ${!showList ? classes['hide-list'] : ''}`}>
                 <li>item 1</li>

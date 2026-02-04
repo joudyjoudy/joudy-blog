@@ -7,3 +7,7 @@
     visibility: hidden;
     opacity: 0;
 }
+.actions{
+    display: flex;
+    
+}
