@@ -15,7 +15,11 @@ export default function Welcome() {
         </div>
         <div className={classes["img"]}>
             <Image src="/assets/butterfly.jpg" alt="beautiful img"
-             width={270} height={148} loading="eager" />
+             width={370} height={148} loading="eager" />
+        </div>
+        <div className={classes["img-2"]}>
+            <Image src="/assets/flower-1.jpg" alt="flower"
+             width={148} height={148} />
         </div>
     </section>)
 }
