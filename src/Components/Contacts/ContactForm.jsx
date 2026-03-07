@@ -1,39 +1,37 @@
 "use client";
+
 import { useState } from "react";
+
 import Button from "../UiElements/Button";
-import classes from "./ContactForm.module.css"
-import { isEmail, isEmpty, isSubject } from "@/helpers/validators";
+import { isEmail, isEmpty, minLength } from "@/helpers/validators";
+import Input from "../UiElements/Input";
 
+import classes from "./ContactForm.module.css";
 
-export default function ContactForm(params) {
+export default function ContactForm() {
   const [name, setName] = useState("");
-  const [nameError, setNameError] = useState("");
+  const [nameError, setNameError] = useState(false);
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [emailError, setEmailError] = useState(false);
   const [subject, setSubject] = useState("");
-  const [subjectError, setSubjectError] = useState("");
+  const [subjectError, setSubjectError] = useState(false);
 
-   const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // send to an api
     console.log(name, email, subject);
-
-    if (
-      isEmpty(name) ||
-      !isEmail(email) ||
-      isMinLength(subject)
-    ) {
+    if (isEmpty(name) || !isEmail(email) || !minLength(subject)) {
       if (isEmpty(name)) {
-        setNameError("Please provide a valid name!");
+        setNameError(true);
       }
 
       if (!isEmail(email)) {
-        setEmailError("Please provide a valid email!");
+        setEmailError(true);
       }
 
-      if (isMinLength(subject)) {
-        setSubjectError("Subject should be at least 5 chars!");
+      if (!minLength(subject)) {
+        setSubjectError(true);
       }
 
       return;
@@ -43,59 +41,55 @@ export default function ContactForm(params) {
     setEmail("");
     setSubject("");
   };
+
   return (
-     <form onSubmit={handleSubmit} className={classes["contact-form"]}>
+    <form onSubmit={handleSubmit} className={classes["contact-form"]}>
       <h3>Contact Us</h3>
 
-      <div className={classes["form-input"]}>
-        <label htmlFor="name">Your Name</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="Write your real name"
-          onChange={(e) => {
-            setName(e.target.value);
-            if (!isEmpty(e.target.value)) {
-              setNameError("");
-            }
-          }}
-          value={name}
-        />
-        <p className={classes["error"]}>{nameError}</p>
-      </div>
+      <Input
+        id="name"
+        type="text"
+        label="Name"
+        placeholder="Write a valid name!"
+        value={name}
+        error={nameError}
+        errorText="Please provide a valid name!"
+        onChange={(e) => {
+          const { value } = e.target;
+          setName(value);
+          if (!isEmpty(value)) setNameError(false);
+        }}
+      />
 
-      <div className={classes["form-input"]}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Write a valid email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (isEmail(e.target.value)) {
-              setEmailError("");
-            }
-          }}
-          value={email}
-        />
-        <p className={classes["error"]}>{emailError}</p>
-      </div>
+      <Input
+        id="email"
+        type="email"
+        label="Email"
+        placeholder="Write a valid email"
+        value={email}
+        error={emailError}
+        errorText="Please provide a valid email!"
+        onChange={(e) => {
+          const { value } = e.target;
+          setEmail(value);
+          if (isEmail(value)) setEmailError(false);
+        }}
+      />
 
-      <div className={classes["form-input"]}>
-        <label htmlFor="subject">Subject</label>
-        <textarea
-          id="subject"
-          placeholder="Write the subject in details"
-          onChange={(e) => {
-            setSubject(e.target.value);
-            if (e.target.value.trim().length >= 5) {
-              setSubjectError("");
-            }
-          }}
-          value={subject}
-        ></textarea>
-        <p className={classes["error"]}>{subjectError}</p>
-      </div>
+      <Input
+        id="subject"
+        type="textarea"
+        label="Subject"
+        placeholder="Write the subject in details"
+        value={subject}
+        error={subjectError}
+        errorText="Subject should be at least 5 chars!"
+        onChange={(e) => {
+          const { value } = e.target;
+          setSubject(value);
+          if (minLength(value)) setSubjectError(false);
+        }}
+      />
 
       <Button className={classes["btn"]}>Send</Button>
     </form>
