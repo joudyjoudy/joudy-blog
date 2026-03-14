@@ -18,6 +18,7 @@ export default function Navbar(){
             <NavLink href="/blog" text="Blog" hideNavList={hideNavList} />
             <NavLink href="/about" text="About" hideNavList={hideNavList} />
             <NavLink href="/contacts" text="Contacts" hideNavList={hideNavList} />
+            <NavLink href="/sign-up" text="Sign-up" hideNavList={hideNavList} />
         </ul>
         <button onClick={toggleNavList} 
                 className={classes["menu-button"]} 
