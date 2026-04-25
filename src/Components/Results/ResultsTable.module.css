@@ -1,0 +1,19 @@
+.results{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.search input{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #1565c0;
+}
+.search input:focus{
+    outline: none;
+    border-color: #83bbdc;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.table{
+    width: 100%;
+    overflow: auto;
+}

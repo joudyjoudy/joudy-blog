@@ -5,17 +5,12 @@ import Button from "@/Components/UiElements/Button"
 export default function BlogPage(){
     const [counter, setCounter] = useState(0)
     const [showList, setShowList] = useState(true)
-    const hideNavList = () => setShowList(false);
     const increaseCounter = () => {
-        if(counter >= 10) return;
-        setCounter(counter + 1)
-    }
-    const decreaseCounter = () => {
-        if(counter <= 0) return;
-        setCounter(counter - 1)
-    }
+  setCounter((prev) => (prev >= 10 ? prev : prev + 1));
+};
+const decreaseCounter = () =>setCounter((prev) => (prev <= 0 ? prev : prev - 1));
     const resetCounter = () =>setCounter(0);
-    const toggleMenu = () => setShowList(!showList);
+    const toggleMenu = () => setShowList((prev) => !prev)
     
     return (
     <section> 

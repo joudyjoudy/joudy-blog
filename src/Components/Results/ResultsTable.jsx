@@ -1,6 +1,30 @@
-export default function ResultsTable({ grade, results }) {
+"use client"
+import { useEffect ,useState } from "react";
+import classes from "./ResultsTable.module.css";
+export default function ResultsTable({ results }) {
+    const [searchText, setSearchText] = useState("");
+    const [searchedResults, setSearchedResults] = useState(results);
+    
+    useEffect(() => {
+  setSearchedResults((prev) => {
+    const updated = results.filter((res) =>
+      res.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    return updated;
+  });
+}, [searchText, results]);
     return (
-    <table>
+    <div className={classes["results"]}>
+        <div className={classes["search"]}>
+            <input 
+                type="search" 
+                placeholder="Search by name..." 
+                onChange={(e) => setSearchText(e.target.value)}
+            />
+        </div>
+        <div className={classes["table"]}>
+        <table>
                 <thead>
                     <tr>
                         <th>No</th>
@@ -14,7 +38,7 @@ export default function ResultsTable({ grade, results }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {results.map((result, i) => {
+                    {searchedResults.map((result, i) => {
                     const {name , math, science, arabic, english, total, percent} = result;
                     return(
                         <tr key={i}>
@@ -30,7 +54,8 @@ export default function ResultsTable({ grade, results }) {
                     )
                     })}
                 </tbody>
-                <tfoot></tfoot>
             </table>
+    </div>
+    </div>
     );
 }
